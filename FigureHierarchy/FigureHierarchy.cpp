@@ -3,9 +3,15 @@
 //FIGURE INTERFACE
 class Figure 
 {
-public:
 	int coor[2];
 	std::string color;
+public:
+	void setCo() {
+		std::cout << "Enter coordinate" << std::endl;
+		std::cin >> coor[0] >> coor[1];
+		std::cout << "Enter figure color" << std::endl;
+		std::cin >> color;
+	}
 };
 //FIGURE::CIRCLE
 class Circle:public Figure
@@ -17,12 +23,10 @@ public:
 		return atan(1) * 4 * radius;
 	}
 	void set_sircle() {
-		std::cout << "Enter circle coor" << std::endl;
-		std::cin >> coor[0] >> coor[1];
+		setCo();
 		std::cout << "Enter circle radius" << std::endl;
 		std::cin >> radius;
-		std::cout << "Enter circle color" << std::endl;
-		std::cin >> color;
+	
 	}
 };
 //FIGURE::SQUARE
@@ -34,11 +38,36 @@ public:
 		return pow(sideLen, 2);
 	}
 	void set_square() {
-		std::cout << "Enter square coordinate" << std::endl;
-		std::cin >> coor[0] >> coor[1];
+		setCo();
 		std::cout << "Enter side lenght square" << std::endl;
 		std::cin >> sideLen;
-		std::cout << "Enter square color" << std::endl;
-		std::cin >> color;
+	}
+};
+//FIGURE::TRIANGLE
+class Triangle : public Figure
+{
+	double sideLenght;
+public:
+	void set_triangle() {
+		setCo();
+		std::cout << "Enter side lenght" << std::endl;
+		std::cin >> sideLenght;
+	}
+	double triangle_square() {
+		return sideLenght * sideLenght * std::sqrt(3) / 4;
+	}
+};
+//FIGURE::RECTANGLE
+class Rectangle : public Figure
+{
+	double height, lenght;
+public:
+	void set_rectangle() {
+		setCo();
+		std::cout << "Enter height and lenght" << std::endl;
+		std::cin >> height >> lenght;			
+	}
+	double rectangle_square() {
+		return height * lenght;
 	}
 };
